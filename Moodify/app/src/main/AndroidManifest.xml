@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Moodify.Splash"
         tools:targetApi="31">
         <activity
+            android:name=".BoardingPage.BoardingPageActivity"
+            android:exported="false" />
+        <activity
             android:name=".Splash.SplashActivity"
             android:exported="true"
             android:theme="@style/Theme.Moodify.Splash">
@@ -27,10 +30,10 @@
             android:exported="false" />
         <activity
             android:name=".LoginRegister.SignUpActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true"/>
+            android:exported="true" />
 
         <meta-data
             android:name="preloaded_fonts"

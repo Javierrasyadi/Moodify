@@ -16,4 +16,11 @@
     <string name="login_to_your_account">Login to Your Account</string>
     <string name="don_t_have_an_account_yet">Don\'t have an account yet?</string>
     <string name="login">Login</string>
+    <string name="title_menu_1">Your loyal friend for your mental health</string>
+    <string name="title_menu_2">Manage stress, increase happiness.</string>
+    <string name="title_menu_3">Manage stress, increase happiness.</string>
+    <string name="desc_menu_1">This app provides various features to help you manage your mental health.</string>
+    <string name="desc_menu_2">Make your days more productive and motivated with the help of meditation tools.</string>
+    <string name="desc_menu_3">Make your days more productive and motivated with the help of meditation tools.</string>
+    <string name="next">Next</string>
 </resources>
