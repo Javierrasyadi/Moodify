@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "643160831565",
+    "project_id": "casptone-of-ours",
+    "storage_bucket": "casptone-of-ours.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:643160831565:android:50c91b0dc56e96ea8d0e04",
+        "android_client_info": {
+          "package_name": "com.example.moodify"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "643160831565-03os9gtha3p2av9knce6jvtqnrjtig21.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.moodify",
+            "certificate_hash": "e6248573dbb2771b92691023b2050245672d0999"
+          }
+        },
+        {
+          "client_id": "643160831565-9q86k9e9metjf16r2t6266kela9ac720.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcq1DWiPbC1DkpwVsLxf4jtK3O48Jxm4w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "643160831565-9q86k9e9metjf16r2t6266kela9ac720.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
