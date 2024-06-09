@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <!-- First ImageView -->
+    <ImageView
+        android:id="@+id/imageViewAqua"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
+        android:src="@drawable/background_detail_journal"
+        android:scaleType="centerCrop"
+        android:layout_gravity="bottom"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="30dp">
+
+
+        <ImageView
+            android:id="@+id/ivDetJournal"
+            android:layout_width="350dp"
+            android:layout_height="280dp"
+            android:layout_marginTop="4dp"
+            android:src="@drawable/img_det_journal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/myJournal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/nunito_sans_bold"
+            android:text="@string/my_journal"
+            android:textColor="@android:color/white"
+            android:textSize="25sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivDetJournal" />
+
+        <TextView
+            android:id="@+id/tvJam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_sans"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/myJournal"
+            tools:text="Written on Tuesday, 14 May 2024" />
+
+
+        <ImageButton
+            android:id="@+id/btnEditJournal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/ic_edit_journal"
+            app:layout_constraintEnd_toStartOf="@+id/btnDelJournal"
+            app:layout_constraintTop_toBottomOf="@+id/ivDetJournal" />
+
+        <ImageButton
+            android:id="@+id/btnDelJournal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/ic_trash"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivDetJournal" />
+
+        <TextView
+            android:id="@+id/tvJournal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/nunito_sans_semibold"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvJam"
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Sed vestibulum, leo vitae malesuada aliquam, ante ligula mollis ligula, sit amet venenatis leo lectus id ipsum.
+Suspendisse dictum mauris id mauris sodales, in imperdiet neque vestibulum.
+Nulla pharetra massa odio, non scelerisque nibh luctus non." />
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAdd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="59dp"
+            android:backgroundTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvJournal"
+            app:layout_constraintVertical_bias="0.586"
+            app:srcCompat="@drawable/ic_angle_left"
+            app:tint="@color/aqua" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
