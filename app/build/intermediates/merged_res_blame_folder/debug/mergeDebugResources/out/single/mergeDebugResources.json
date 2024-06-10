@@ -1,0 +1,130 @@
+[
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\mipmap-anydpi\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\drawable_icon_google.xml.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\drawable\\icon_google.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\drawable_background_edittext.xml.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\drawable\\background_edittext.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\font_nunito_sans_extralight.xml.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\font\\nunito_sans_extralight.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\layout_activity_profile.xml.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\layout\\activity_profile.xml"
+    },
+    {
+        "merged": "com.example.moodify.app-debug-40:/layout_activity_main.xml.flat",
+        "source": "com.example.moodify.app-main-42:/layout/activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\layout_activity_splash.xml.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\layout\\activity_splash.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\font_nunito_sans.xml.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\font\\nunito_sans.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\drawable_google_btn.png.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\drawable\\google_btn.png"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\font_nunito_sans_semibold.xml.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\font\\nunito_sans_semibold.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\font_nunito_sans_bold.xml.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\font\\nunito_sans_bold.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\drawable_logo_moodify.png.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\drawable\\logo_moodify.png"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\drawable_background_stroke.xml.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\drawable\\background_stroke.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\mipmap-anydpi\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\drawable_background_stroke_aqua.xml.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\drawable\\background_stroke_aqua.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\layout_activity_sign_up.xml.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\layout\\activity_sign_up.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-debug-40:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\Jauza\\.gradle\\daemon\\8.6\\com.example.moodify.app-main-42:\\xml\\data_extraction_rules.xml"
+    }
+]
