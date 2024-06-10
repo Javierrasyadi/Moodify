@@ -16,6 +16,10 @@
     <string name="login_to_your_account">Login to Your Account</string>
     <string name="don_t_have_an_account_yet">Don\'t have an account yet?</string>
     <string name="login">Login</string>
+    <string name="submit">Submit</string>
+    <string name="privacy_and_policy">In using this service, I acknowledge and accept the applicable terms and conditions and privacy policy.</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_menu_1">Your loyal friend for your mental health</string>
     <string name="title_menu_2">Manage stress, increase happiness.</string>
     <string name="title_menu_3">Manage stress, increase happiness.</string>
@@ -23,4 +27,12 @@
     <string name="desc_menu_2">Make your days more productive and motivated with the help of meditation tools.</string>
     <string name="desc_menu_3">Make your days more productive and motivated with the help of meditation tools.</string>
     <string name="next">Next</string>
+    <string name="my_journal">My Journal</string>
+    <string name="desc_journal_2">Fill in your journal according to the questions</string>
+    <string name="desc_journal_3">You can fill it according to these points:</string>
+    <string name="desc_journal_4">• How do you feel today?</string>
+    <string name="desc_journal_5">• Since when have you experienced this feeling?</string>
+    <string name="desc_journal_6">• Where do you get that feeling?</string>
+    <string name="desc_journal_7">Write your answer in at least 30 characters</string>
+    <string name="type_your_answer_here">Type your answer here...</string>
 </resources>

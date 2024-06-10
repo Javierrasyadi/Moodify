@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,12 +15,18 @@
         android:theme="@style/Theme.Moodify.Splash"
         tools:targetApi="31">
         <activity
-            android:name=".BoardingPage.BoardingPageActivity"
+            android:name=".ui.MyJournalActivity"
             android:exported="false" />
         <activity
             android:name=".Splash.SplashActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Moodify.Splash">
+            android:exported="false"
+            android:theme="@style/Theme.Moodify.Splash" />
+        <activity
+            android:name=".ui.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.RegisterActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,13 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginRegister.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginRegister.SignUpActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true" />
 
         <meta-data

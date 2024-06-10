@@ -5,9 +5,8 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
-import com.example.moodify.BoardingPage.BoardingPageActivity
 import com.example.moodify.R
-import com.example.moodify.LoginRegister.SignUpActivity
+import com.example.moodify.ui.RegisterActivity
 
 class SplashActivity : AppCompatActivity() {
 
@@ -17,7 +16,7 @@ class SplashActivity : AppCompatActivity() {
 
         // Delay for 3 seconds and then start SignUpActivity
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, BoardingPageActivity::class.java)
+            val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
             finish()
         }, 3000) // 3000 milliseconds = 3 seconds
