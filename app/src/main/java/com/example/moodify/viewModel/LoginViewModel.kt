@@ -4,9 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.moodify.Repository.MoodifyRepository
-import com.example.moodify.response.LoginResponse
-import com.example.moodify.response.Result
+import com.example.moodify.model.response.JournalItem
+import com.example.moodify.repository.MoodifyRepository
+import com.example.moodify.model.response.Result
 import kotlinx.coroutines.launch
 
 class LoginViewModel(private val repository: MoodifyRepository) : ViewModel() {

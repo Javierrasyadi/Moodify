@@ -2,6 +2,7 @@ package com.example.moodify.ui
 
 import android.content.Intent
 import android.os.Build
+import android.os.Build.VERSION_CODES.M
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -12,16 +13,17 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.moodify.viewModel.LoginViewModel
 import com.example.moodify.databinding.ActivityLoginBinding
-import com.example.moodify.response.Result
+import com.example.moodify.model.response.Result
+import com.example.moodify.ui.MyJournalActivity.Companion.EXTRA_IS_NEW
 import com.example.moodify.viewModel.ViewModelFactory
 
 class LoginActivity : AppCompatActivity() {
-    companion object{
+    companion object {
         private const val EXTRA_NAME = "extra_name"
     }
 
     private lateinit var binding: ActivityLoginBinding
-    private val loginViewModel: LoginViewModel by viewModels{
+    private val loginViewModel: LoginViewModel by viewModels {
         ViewModelFactory.getInstance(this)
     }
 
@@ -55,12 +57,8 @@ class LoginActivity : AppCompatActivity() {
                     }
 
                     is Result.Success -> {
-                        showLoading(false)
                         Log.d("loginSucces", it.data)
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                        val getExtraName = intent.getStringExtra(EXTRA_NAME)
-                        intent.putExtra(ProfileActivity.EXTRA_EMAIL, email)
-                        intent.putExtra(ProfileActivity.EXTRA_NAME, getExtraName)
                         startActivity(intent)
                         finish()
                     }
@@ -75,6 +73,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
+
 
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {

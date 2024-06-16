@@ -41,14 +41,11 @@ class ProfileActivity : AppCompatActivity() {
         binding.btnLogout.setOnClickListener {
             viewModel.logout()
             val intent = Intent(this@ProfileActivity, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
             finish()
         }
 
-        val name = intent.getStringExtra(MainActivity.EXTRA_NAME)
-        val email = intent.getStringExtra(MainActivity.EXTRA_EMAIL)
 
-        binding.tvEmail.text = email
-        binding.tvDisplayName.text = name
     }
 }

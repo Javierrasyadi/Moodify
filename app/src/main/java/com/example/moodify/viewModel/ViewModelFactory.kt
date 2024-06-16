@@ -3,7 +3,7 @@ package com.example.moodify.viewModel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.moodify.Repository.MoodifyRepository
+import com.example.moodify.repository.MoodifyRepository
 import com.example.moodify.injection.Injection
 
 class ViewModelFactory(private val repository: MoodifyRepository) : ViewModelProvider.NewInstanceFactory() {
@@ -16,6 +16,12 @@ class ViewModelFactory(private val repository: MoodifyRepository) : ViewModelPro
             }
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(MyJournalViewModel::class.java)->{
+                MyJournalViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(MainViewModel::class.java)->{
+                MainViewModel(repository) as T
             }
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

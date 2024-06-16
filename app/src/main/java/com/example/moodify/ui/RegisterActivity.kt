@@ -11,7 +11,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.moodify.viewModel.RegisterViewModel
 import com.example.moodify.databinding.ActivitySignUpBinding
-import com.example.moodify.response.Result
+import com.example.moodify.model.response.Result
 import com.example.moodify.viewModel.ViewModelFactory
 
 class RegisterActivity : AppCompatActivity() {
@@ -27,6 +27,13 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        registerViewModel.getSession().observe(this) {
+            if (it.isLogin) {
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }
+        }
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             window.insetsController?.hide(WindowInsets.Type.statusBars())
         } else {
@@ -40,6 +47,7 @@ class RegisterActivity : AppCompatActivity() {
         binding.tvClickHere.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
+            finish()
         }
 
         binding.btnCreate.setOnClickListener {
@@ -72,6 +80,7 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun showLoading(isLoading: Boolean){
         if (isLoading){
             binding.loading.visibility = View.VISIBLE

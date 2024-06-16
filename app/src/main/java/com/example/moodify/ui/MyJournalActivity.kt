@@ -1,21 +1,85 @@
 package com.example.moodify.ui
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.util.Log
+import android.view.View
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.moodify.R
+import com.example.moodify.Classifier
+import com.example.moodify.databinding.ActivityMyJournalBinding
+import com.example.moodify.ml.Model
+import com.example.moodify.viewModel.MyJournalViewModel
+import com.example.moodify.viewModel.ViewModelFactory
+import org.tensorflow.lite.DataType
+import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
+import java.nio.ByteBuffer
+import com.example.moodify.model.response.Result
+import com.example.moodify.ui.MoodActivity.Companion.EXTRA_MOOD
+import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.runBlocking
+import java.nio.ByteOrder
 
 class MyJournalActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMyJournalBinding
+    private val viewModel by viewModels<MyJournalViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
+    private lateinit var classifier: Classifier
+
+    private val isNew by lazy { intent.getBooleanExtra(EXTRA_IS_NEW, false) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_my_journal)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivityMyJournalBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        classifier = Classifier(this)
+        classifier.load("model.tflite", "word_dict.json") {
+            binding.submitBtn.isEnabled = true
         }
+        binding.submitBtn.setOnClickListener {
+            val description = binding.etJournal.text.toString().trim()
+            runBlocking {
+                val predictedMood = async { classifier.classify(description) }
+                Log.d(TAG, "Description: $description")
+                Log.d(TAG, "Emotion prediction: ${predictedMood.await()}")
+                submitJournal(description, predictedMood.await())
+            }
+        }
+    }
+
+    private fun submitJournal(description: String, mood: String) {
+        viewModel.addJournal("My Journal", description, mood).observe(this) { result ->
+            when (result) {
+                is Result.Success -> {
+                    binding.progressIndicator.visibility = View.GONE
+                    if (isNew) {
+                        val intent = Intent(this@MyJournalActivity, MoodActivity::class.java)
+                        intent.putExtra(EXTRA_MOOD, mood)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(applicationContext, result.data, Toast.LENGTH_SHORT).show()
+                        finish()
+                    }
+                }
+
+                is Result.Loading -> {
+                    binding.progressIndicator.visibility = View.VISIBLE
+                }
+
+                is Result.Error -> {
+                    binding.progressIndicator.visibility = View.GONE
+                    Toast.makeText(this, result.error, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+    }
+
+    companion object {
+        private const val TAG = "MyJournalActivity"
+        const val EXTRA_IS_NEW = "extra_is_new"
     }
 }

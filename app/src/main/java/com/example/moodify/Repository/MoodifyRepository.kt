@@ -1,12 +1,18 @@
-package com.example.moodify.Repository
+package com.example.moodify.repository
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
-import com.example.moodify.response.LoginResponse
-import com.example.moodify.response.RegisterResponse
-import com.example.moodify.response.Result
+import com.example.moodify.model.request.AddJournalRequest
+import com.example.moodify.model.request.LoginRequest
+import com.example.moodify.model.request.SignUpRequest
+import com.example.moodify.model.response.AddJournalResponse
+import com.example.moodify.model.response.ErrorResponse
+import com.example.moodify.model.response.GetDetailJournalResponse
+import com.example.moodify.model.response.JournalItem
+import com.example.moodify.model.response.RegisterResponse
+import com.example.moodify.model.response.Result
 import com.example.moodify.retrofit.ApiService
 import com.example.moodify.retrofit.Preference
 import com.example.moodify.retrofit.UserModel
@@ -20,19 +26,26 @@ import retrofit2.Callback
 import retrofit2.HttpException
 import retrofit2.Response
 import java.net.SocketTimeoutException
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class MoodifyRepository private constructor(
     private val userPreference: Preference,
-    private val apiService: ApiService
+    private var apiService: ApiService
 ) {
     private val resultApi = MutableLiveData<Result<String>>()
+    private val resultJournal = MutableLiveData<Result<List<JournalItem>>>()
     suspend fun login(email: String, password: String): LiveData<Result<String>> {
         try {
-            val mediaType = "application/json".toMediaType()
-            val body = "{\n    \"email\": \"entdecker000@gmail.com\",\n    \"password\": \"jangkrik123\"\n}".toRequestBody(mediaType)
-            val successResponse = apiService.login(body)
+            val request = LoginRequest(email, password)
+            val successResponse = apiService.login(request)
             Log.d(TAG, "login: $successResponse")
-            val user = UserModel(successResponse.user.email, successResponse.user.uid, true)
+            val user = UserModel(
+                successResponse.user.email,
+                successResponse.user.stsTokenManager.accessToken,
+                successResponse.user.providerData[0].displayName ?: "User",
+                true
+            )
             Log.d(TAG + "cek token", successResponse.user.uid)
             userPreference.saveSession(user)
             resultApi.value = Result.Success(successResponse.message)
@@ -42,9 +55,9 @@ class MoodifyRepository private constructor(
 
         } catch (e: HttpException) {
             val errorBody = e.response()?.errorBody()?.string()
-            val errorResponse = Gson().fromJson(errorBody, LoginResponse::class.java)
-            resultApi.value = Result.Error(errorResponse.message)
-            Log.d(TAG, "error: ${errorResponse.message}")
+            val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)
+            resultApi.value = Result.Error(errorResponse.message ?: errorResponse.error)
+            Log.d(TAG, "error: $errorResponse")
         } catch (e: SocketTimeoutException) {
             Log.d(TAG, "timeout: ${e.message}")
             resultApi.value = Result.Error("Timeout")
@@ -54,16 +67,61 @@ class MoodifyRepository private constructor(
 
     suspend fun signUp(name: String, email: String, password: String): LiveData<Result<String>> {
         try {
-            val mediaType = "application/json".toMediaType()
-            val body = "{\n    \"email\": \"jauza1906@gmail.com\",\n    \"password\": \"jauzaarya\"\n}".toRequestBody(mediaType)
-            val response = apiService.register(body)
+            val request = SignUpRequest(name, email, password)
+            val response = apiService.register(request)
             resultApi.value = Result.Success(response.message!!)
             Log.d(TAG, "pendaftaran berhasil")
         } catch (e: HttpException) {
             val errorBody = e.response()?.errorBody()?.string()
-            val responseError = Gson().fromJson(errorBody, RegisterResponse::class.java)
-            resultApi.value = Result.Error(responseError.message!!)
-            Log.e(TAG, "error signup $responseError")
+            val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)
+            resultApi.value = Result.Error(errorResponse.message ?: errorResponse.error)
+            Log.e(TAG, "error signup $errorResponse")
+        }
+        return resultApi
+    }
+
+    fun getJournal(): LiveData<Result<List<JournalItem>>> {
+        resultJournal.value = Result.Loading
+        val client = apiService.getJournal()
+        client.enqueue(object : Callback<GetDetailJournalResponse> {
+            override fun onResponse(
+                call: Call<GetDetailJournalResponse>,
+                response: Response<GetDetailJournalResponse>
+            ) {
+                if (response.isSuccessful) {
+                    response.body()?.let {
+                        val sortedItems = sortJournalItemsByUpdatedAt(it.journal)
+                        resultJournal.value = Result.Success(sortedItems)
+                    }
+                } else {
+                    resultJournal.value = Result.Error("GetStories Error: Cant Retrieve data")
+                }
+            }
+
+            override fun onFailure(p0: Call<GetDetailJournalResponse>, p1: Throwable) {
+                resultJournal.value = Result.Error("GetStories Error: Cant Retrieve data")
+            }
+        })
+        return resultJournal
+    }
+
+    suspend fun addJournal(
+        title: String,
+        desc: String,
+        mood: String
+    ): LiveData<Result<String>> {
+        try {
+            val journal = AddJournalRequest(title, desc, mood)
+            val response = apiService.addJournal(journal)
+            resultApi.value = Result.Success(response.message)
+        } catch (e: HttpException) {
+            val errorBody = e.response()?.errorBody()?.string()
+            val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)
+            resultApi.value = Result.Error(errorResponse.message ?: errorResponse.error)
+            Log.d(TAG, "error: ${errorResponse.message ?: errorResponse.error}")
+        } catch (e: SocketTimeoutException) {
+            Log.d(TAG, "timeout: ${e.message}")
+            resultApi.value = Result.Error("Timeout")
         }
         return resultApi
     }
@@ -71,6 +129,13 @@ class MoodifyRepository private constructor(
 
     fun getSession(): Flow<UserModel> {
         return userPreference.getSession()
+    }
+
+    private fun sortJournalItemsByUpdatedAt(journalItems: List<JournalItem>): List<JournalItem> {
+        val formatter = DateTimeFormatter.ISO_DATE_TIME
+        return journalItems.sortedByDescending {
+            LocalDateTime.parse(it.updatedAt, formatter)
+        }
     }
 
     suspend fun logout() {

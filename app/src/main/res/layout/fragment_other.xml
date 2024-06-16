@@ -4,156 +4,177 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_row="2"
-    android:layout_column="2"
     android:orientation="vertical"
-    tools:context=".">
+    tools:context=".ui.OtherFragment">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:fontFamily="@font/nunito_sans_bold"
-        android:gravity="center"
-        android:text="Other"
-        android:textSize="25dp" />
+        android:layout_height="match_parent"
+        >
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:alpha="0.5"
-        android:fontFamily="@font/nunito_sans_bold"
-        android:gravity="center"
-        android:text="Category"
-        android:textSize="16sp" />
-
-    <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:columnCount="2"
-        app:rowCount="2">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="175dp"
-            android:layout_height="100dp"
-            app:cardElevation="20dp"
-            app:cardCornerRadius="10dp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
             >
-            <ImageButton
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/meditation_bg"
-                android:scaleY="1.8"
-                />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/nunito_sans_bold"
+                android:gravity="center"
+                android:text="Other"
+                android:textSize="25dp"/>
+
+<!--            <GridLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="275dp"-->
+<!--                app:columnCount="2"-->
+<!--                app:rowCount="2">-->
+
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:id="@+id/btn_to_meditation"-->
+<!--                    android:layout_width="175dp"-->
+<!--                    android:layout_height="100dp"-->
+<!--                    android:layout_marginStart="20dp"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_marginBottom="20dp"-->
+<!--                    app:cardCornerRadius="10dp"-->
+<!--                    app:cardElevation="20dp">-->
+
+<!--                    <ImageButton-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:background="@drawable/meditation_bg"-->
+<!--                        android:scaleY="1.8" />-->
+
+<!--                    <View-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:alpha="0.2"-->
+<!--                        android:background="@color/black" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:fontFamily="@font/nunito_sans_bold"-->
+<!--                        android:text="Meditation"-->
+<!--                        android:textColor="@color/white" />-->
+<!--                </androidx.cardview.widget.CardView>-->
+
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:id="@+id/btn_to_music"-->
+<!--                    android:layout_width="175dp"-->
+<!--                    android:layout_height="100dp"-->
+<!--                    android:layout_marginStart="20dp"-->
+<!--                    android:layout_marginTop="20dp"-->
+<!--                    android:layout_marginEnd="20dp"-->
+<!--                    app:cardCornerRadius="10dp"-->
+<!--                    app:cardElevation="20dp"-->
+<!--                    app:layout_gravity="end">-->
+
+<!--                    <ImageButton-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:background="@drawable/music_bg" />-->
+
+<!--                    <View-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:alpha="0.2"-->
+<!--                        android:background="@color/black" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:fontFamily="@font/nunito_sans_bold"-->
+<!--                        android:text="Music"-->
+<!--                        android:textColor="@color/white" />-->
+<!--                </androidx.cardview.widget.CardView>-->
+
+
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:id="@+id/btn_to_story"-->
+<!--                    android:layout_width="175dp"-->
+<!--                    android:layout_height="100dp"-->
+<!--                    android:layout_marginStart="20dp"-->
+<!--                    app:cardCornerRadius="10dp"-->
+<!--                    app:cardElevation="10dp"-->
+<!--                    android:layout_column="0"-->
+<!--                    android:layout_row="1"-->
+
+<!--                    >-->
+
+<!--                    <ImageButton-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:background="@drawable/story_bg"-->
+<!--                        android:scaleY="1.6" />-->
+
+<!--                    <View-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:alpha="0.2"-->
+<!--                        android:background="@color/black" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:fontFamily="@font/nunito_sans_bold"-->
+<!--                        android:text="Story"-->
+<!--                        android:textColor="@color/white" />-->
+<!--                </androidx.cardview.widget.CardView>-->
+
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:id="@+id/btn_to_podcast"-->
+<!--                    android:layout_width="175dp"-->
+<!--                    android:layout_height="100dp"-->
+<!--                    android:layout_marginStart="20dp"-->
+<!--                    android:layout_marginEnd="20dp"-->
+<!--                    android:layout_marginBottom="20dp"-->
+<!--                    app:cardCornerRadius="10dp"-->
+<!--                    app:cardElevation="20dp"-->
+<!--                    app:layout_gravity="end">-->
+
+<!--                    <ImageButton-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:background="@drawable/podcast_bg"-->
+<!--                        android:scaleX="1.1"-->
+<!--                        android:scaleY="1.1" />-->
+
+<!--                    <View-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:alpha="0.2"-->
+<!--                        android:background="@color/black" />-->
+
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:fontFamily="@font/nunito_sans_bold"-->
+<!--                        android:text="Podcast"-->
+<!--                        android:textColor="@color/white" />-->
+<!--                </androidx.cardview.widget.CardView>-->
+
+<!--                <ImageButton-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_row="1"-->
+<!--                    android:background="@drawable/meditation_bg" />-->
+<!--            </GridLayout>-->
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/black"
-                android:alpha="0.2"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Meditation"
-                android:fontFamily="@font/nunito_sans_bold"
-                android:textColor="@color/white"
-                />
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="175dp"
-            android:layout_height="100dp"
-            app:layout_gravity="end"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="20dp"
-            >
-            <ImageButton
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/music_bg"
-                />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/black"
-                android:alpha="0.2"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Music"
-                android:fontFamily="@font/nunito_sans_bold"
-                android:textColor="@color/white"
-                />
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="175dp"
-            android:layout_height="100dp"
-            android:layout_marginStart="20dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="10dp"
-            >
-            <ImageButton
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/story_bg"
-                android:scaleY="1.6"
-                />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/black"
-                android:alpha="0.2"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Story"
-                android:fontFamily="@font/nunito_sans_bold"
-                android:textColor="@color/white"
-                />
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="175dp"
-            android:layout_height="100dp"
-            app:layout_gravity="end"
-            android:layout_marginBottom="20dp"
-            android:layout_marginEnd="20dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="20dp"
-            >
-            <ImageButton
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/podcast_bg"
-                android:scaleY="1.1"
-                android:scaleX="1.1"
-                />
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/black"
-                android:alpha="0.2"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Podcast"
-                android:fontFamily="@font/nunito_sans_bold"
-                android:textColor="@color/white" />
-        </androidx.cardview.widget.CardView>
-    </GridLayout>
+                android:alpha="0.2"
+                android:background="@color/black" />
+        </LinearLayout>
+    </ScrollView>
 
     <View
         android:layout_width="wrap_content"

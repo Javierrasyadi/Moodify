@@ -1,28 +1,36 @@
 package com.example.moodify.retrofit
 
-import com.example.moodify.response.LoginResponse
-import com.example.moodify.response.RegisterResponse
+import com.example.moodify.model.request.AddJournalRequest
+import com.example.moodify.model.request.LoginRequest
+import com.example.moodify.model.request.SignUpRequest
+import com.example.moodify.model.response.AddJournalResponse
+import com.example.moodify.model.response.GetDetailJournalResponse
+import com.example.moodify.model.response.LoginResponse
+import com.example.moodify.model.response.RegisterResponse
+import okhttp3.Call
 import okhttp3.RequestBody
 import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
 
 interface ApiService {
-    @POST("register")
-    suspend fun register(
-        @Field("email") email:String,
-        @Field("password") password:String
-    ): RegisterResponse
-
-
-    @POST("login")
+    @POST("auth/login")
     suspend fun login(
-        @Body requestBody: RequestBody
+        @Body request: LoginRequest
     ): LoginResponse
 
-    @POST("register")
+    @POST("auth/register")
     suspend fun register(
-        @Body requestBody: RequestBody
+        @Body requestBody: SignUpRequest
     ): RegisterResponse
+
+    @POST("tool/journal")
+    suspend fun addJournal(
+        @Body request: AddJournalRequest
+    ): AddJournalResponse
+
+    @GET("tool/journal")
+    fun getJournal(): retrofit2.Call<GetDetailJournalResponse>
 }

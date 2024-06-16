@@ -33,7 +33,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/myJournal"
+            android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -51,7 +51,7 @@
             android:fontFamily="@font/nunito_sans"
             android:textColor="@android:color/white"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/myJournal"
+            app:layout_constraintTop_toBottomOf="@+id/tv_title"
             tools:text="Written on Tuesday, 14 May 2024" />
 
 

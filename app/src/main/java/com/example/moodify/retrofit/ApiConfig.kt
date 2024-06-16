@@ -27,7 +27,7 @@ class ApiConfig {
                 .addInterceptor(authInterceptor)
                 .build()
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://moodify-r25es5rdqq-et.a.run.app/auth/")
+                .baseUrl("https://moodify-r25es5rdqq-et.a.run.app/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()
