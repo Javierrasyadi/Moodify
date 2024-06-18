@@ -90,6 +90,11 @@ class HomeFragment(
             val intent = Intent(requireActivity(), ProfileActivity::class.java)
             startActivity(intent)
         }
+
+        binding.btnToRecommendation.setOnClickListener {
+            val intent = Intent(requireActivity(),CopingActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 

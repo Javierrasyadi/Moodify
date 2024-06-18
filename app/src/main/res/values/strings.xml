@@ -36,4 +36,19 @@
     <string name="desc_journal_7">Write your answer in at least 30 characters</string>
     <string name="type_your_answer_here">Type your answer here...</string>
     <string name="you_re_feeling">You\'re \nfeeling</string>
+    <string name="mindfull_meditation">Mindfull\nMeditation</string>
+    <string name="woa_1">I am turning DOWN the volume of negativity in my life, while simultaneously turning UP the volume of positivity.</string>
+    <string name="start">start</string>
+    <string name="doing_box_breathing">Doing Box Breathing</string>
+    <string name="instruction_coping_tools">Step One:Breathe in through the nose for a count of 4.\nStep Two:Hold breath for a count of 4.\nStep Three:Breath out for a count of 4.\nStep Four:Hold breath for a count of 4.\nRepeat 3 times</string>
+    <string name="halaman_1">1/5</string>
+    <string name="halaman_2">2/5</string>
+    <string name="prev">Prev</string>
+    <string name="listening_session_1">Listening Session #1</string>
+    <string name="halaman_3">3/5</string>
+    <string name="listening_session_2">Listening Session #2</string>
+    <string name="halaman_4">4/5</string>
+    <string name="woa_2">I finish what matters and let go of what does not.</string>
+    <string name="halaman_5">5/5</string>
+    <string name="finish">Finish</string>
 </resources>

@@ -4,6 +4,7 @@ import com.example.moodify.model.request.AddJournalRequest
 import com.example.moodify.model.request.LoginRequest
 import com.example.moodify.model.request.SignUpRequest
 import com.example.moodify.model.response.AddJournalResponse
+import com.example.moodify.model.response.CopingResponse
 import com.example.moodify.model.response.GetDetailJournalResponse
 import com.example.moodify.model.response.LoginResponse
 import com.example.moodify.model.response.RegisterResponse
@@ -33,4 +34,8 @@ interface ApiService {
 
     @GET("tool/journal")
     fun getJournal(): retrofit2.Call<GetDetailJournalResponse>
+
+    @GET("coping/coping-recommendations")
+    fun getCoping(): retrofit2.Call<CopingResponse>
+
 }

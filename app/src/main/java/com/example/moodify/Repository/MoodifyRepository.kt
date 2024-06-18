@@ -8,6 +8,7 @@ import com.example.moodify.model.request.AddJournalRequest
 import com.example.moodify.model.request.LoginRequest
 import com.example.moodify.model.request.SignUpRequest
 import com.example.moodify.model.response.AddJournalResponse
+import com.example.moodify.model.response.CopingResponse
 import com.example.moodify.model.response.ErrorResponse
 import com.example.moodify.model.response.GetDetailJournalResponse
 import com.example.moodify.model.response.JournalItem
@@ -35,6 +36,7 @@ class MoodifyRepository private constructor(
 ) {
     private val resultApi = MutableLiveData<Result<String>>()
     private val resultJournal = MutableLiveData<Result<List<JournalItem>>>()
+    private val resultCoping = MutableLiveData<Result<CopingResponse>>()
     suspend fun login(email: String, password: String): LiveData<Result<String>> {
         try {
             val request = LoginRequest(email, password)
@@ -124,6 +126,26 @@ class MoodifyRepository private constructor(
             resultApi.value = Result.Error("Timeout")
         }
         return resultApi
+    }
+
+    fun getCoping(): LiveData<Result<CopingResponse>> {
+        val resultCoping = MutableLiveData<Result<CopingResponse>>()
+        resultCoping.value = Result.Loading
+        val client = apiService.getCoping()
+        client.enqueue(object : Callback<CopingResponse> {
+            override fun onResponse(call: Call<CopingResponse>, response: Response<CopingResponse>) {
+                if (response.isSuccessful) {
+                    resultCoping.value = Result.Success(response.body()!!)
+                } else {
+                    resultCoping.value = Result.Error("GetCoping Error: Cant Retrieve data")
+                }
+            }
+
+            override fun onFailure(call: Call<CopingResponse>, t: Throwable) {
+                resultCoping.value = Result.Error("GetCoping Error: Cant Retrieve data")
+            }
+        })
+        return resultCoping
     }
 
 

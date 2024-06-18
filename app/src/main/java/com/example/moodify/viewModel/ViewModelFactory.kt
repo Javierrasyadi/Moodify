@@ -23,6 +23,10 @@ class ViewModelFactory(private val repository: MoodifyRepository) : ViewModelPro
             modelClass.isAssignableFrom(MainViewModel::class.java)->{
                 MainViewModel(repository) as T
             }
+            modelClass.isAssignableFrom(CopingViewModel::class.java)->{
+                CopingViewModel(repository) as T
+            }
+
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }
     }
