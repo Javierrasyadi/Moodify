@@ -3,16 +3,22 @@ package com.example.moodify.ui
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.moodify.R
 import com.example.moodify.databinding.ActivityLoginBinding
 import com.example.moodify.databinding.ActivityMoodBinding
+import com.example.moodify.viewModel.MainViewModel
+import com.example.moodify.viewModel.ViewModelFactory
 
 class MoodActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMoodBinding
     private val mood by lazy { intent.getStringExtra(EXTRA_MOOD) }
+    private val viewModel by viewModels<MainViewModel> {
+        ViewModelFactory.getInstance(this)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMoodBinding.inflate(layoutInflater)
@@ -36,12 +42,12 @@ class MoodActivity : AppCompatActivity() {
             when (mood) {
                 "anger", "fear", "sadness" -> {
                     ivMood.setImageResource(R.drawable.ic_mood_sad)
-                    tvMood.text = "Sad"
+                    tvMood.text = "Bad"
                 }
 
                 "love", "joy", "happy" -> {
                     ivMood.setImageResource(R.drawable.ic_mood_happy)
-                    tvMood.text = "Happy"
+                    tvMood.text = "Good"
                 }
 
                 else -> {
@@ -54,8 +60,9 @@ class MoodActivity : AppCompatActivity() {
 
     private fun setListener() {
         binding.btnMedication.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
+            val intent = Intent(this@MoodActivity, MainActivity::class.java)
+            intent.putExtra(MainActivity.EXTRA_MOOD_DESC, mood)
+            startActivity(intent)
         }
     }
 

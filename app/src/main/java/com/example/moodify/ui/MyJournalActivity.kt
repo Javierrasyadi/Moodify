@@ -7,7 +7,9 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.example.moodify.Classifier
+import com.example.moodify.R
 import com.example.moodify.databinding.ActivityMyJournalBinding
 import com.example.moodify.ml.Model
 import com.example.moodify.viewModel.MyJournalViewModel
@@ -17,6 +19,7 @@ import org.tensorflow.lite.support.tensorbuffer.TensorBuffer
 import java.nio.ByteBuffer
 import com.example.moodify.model.response.Result
 import com.example.moodify.ui.MoodActivity.Companion.EXTRA_MOOD
+import com.example.moodify.viewModel.MainViewModel
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.runBlocking
@@ -27,6 +30,7 @@ class MyJournalActivity : AppCompatActivity() {
     private val viewModel by viewModels<MyJournalViewModel> {
         ViewModelFactory.getInstance(this)
     }
+
     private lateinit var classifier: Classifier
 
     private val isNew by lazy { intent.getBooleanExtra(EXTRA_IS_NEW, false) }
@@ -55,7 +59,7 @@ class MyJournalActivity : AppCompatActivity() {
             when (result) {
                 is Result.Success -> {
                     binding.progressIndicator.visibility = View.GONE
-                    if (isNew) {
+                    if (result != null) {
                         val intent = Intent(this@MyJournalActivity, MoodActivity::class.java)
                         intent.putExtra(EXTRA_MOOD, mood)
                         startActivity(intent)

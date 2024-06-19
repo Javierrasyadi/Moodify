@@ -12,6 +12,8 @@ import androidx.lifecycle.LiveData
 import com.example.moodify.R
 import com.example.moodify.databinding.FragmentHomeBinding
 import com.example.moodify.model.response.JournalItem
+import com.example.moodify.model.response.JournalResult
+import com.example.moodify.model.response.Mood
 import com.example.moodify.model.response.Result
 import com.example.moodify.retrofit.UserModel
 import com.example.moodify.ui.DetailJournalActivity.Companion.EXTRA_JOURNAL
@@ -25,13 +27,16 @@ import java.util.Locale
 
 class HomeFragment(
     private val user: LiveData<UserModel>,
-    private val listJournal: LiveData<Result<List<JournalItem>>>
+    private val listJournal: LiveData<Result<List<JournalItem>>>,
+    private val mood: LiveData<String>
 ) : Fragment() {
     companion object {
         const val EXTRA_NAME = "extra_name"
         const val EXTRA_EMAIL = "extra_email"
-        const val EXTRA_MOOD_TITLE = "extra_mood_title"
+        const val EXTRA_MOOD_DESC = "extra_mood_desc"
     }
+
+
 
     private lateinit var binding: FragmentHomeBinding
 
@@ -48,11 +53,28 @@ class HomeFragment(
         user.observe(viewLifecycleOwner) {
             binding.tvHelloUser.text = "Hello ${it.name}"
         }
+        mood.observe(viewLifecycleOwner){
+            binding.tvMoodDesc.text = "You feel ${it} today"
+            binding.apply {
+                when(mood.value){
+                    "anger", "fear", "sadness" -> {
+                        ivMood.setImageResource(R.drawable.ic_mood_sad)
+                        tvMoodTitle.text = "Bad"
+                    }
 
-//        binding.apply {
-//            val intent = Intent(context, MainActivity::class.java)
-//
-//        }
+                    "love", "joy", "happy" -> {
+                        ivMood.setImageResource(R.drawable.ic_mood_happy)
+                        tvMoodTitle.text = "Good"
+                    }
+
+                    else -> {
+                        ivMood.setImageResource(R.drawable.ic_mood_neutral)
+                        tvMoodTitle.text = "Neutral"
+                    }
+                }
+            }
+
+        }
 
         listJournal.observe(viewLifecycleOwner) { result ->
             if (result is Result.Success) {
