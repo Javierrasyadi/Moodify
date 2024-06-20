@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".coping.PodcastFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/podcast_other_bg"
+    >
+
+    <TextView
+        android:id="@+id/music_title_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:text="Podcast"
+        android:fontFamily="@font/nunito_sans_bold"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="50dp"/>
+
+    <TextView
+        android:id="@+id/tv_affirmation_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:text="text"
+        android:fontFamily="@font/nunito_sans_semibold"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/music_title_fragment"
+        app:layout_constraintStart_toStartOf="parent"
+        android:gravity="center_horizontal"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="50dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_media"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/music_title_fragment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:cardCornerRadius="15dp"
+        android:backgroundTint="@color/white"
+        app:cardElevation="10dp"
+        android:alpha="0.5"
+        android:layout_marginBottom="70dp"
+        >
+        <androidx.media3.ui.PlayerView
+            android:id="@+id/player_view_podcast"
+            android:layout_width="match_parent"
+            android:layout_height="175dp"
+            app:default_artwork="@drawable/listening_music_illustration"
+            app:resize_mode="fixed_width"
+            app:show_buffering="when_playing"
+            app:use_artwork="true"
+            />
+    </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="59dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cv_media"
+        app:layout_constraintVertical_bias="0.4"
+        app:srcCompat="@drawable/ic_angle_left"
+        app:tint="@color/aqua"
+        app:elevation="20dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

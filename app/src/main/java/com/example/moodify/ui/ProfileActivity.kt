@@ -7,11 +7,15 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
 import com.example.moodify.viewModel.LoginViewModel
 import com.example.moodify.databinding.ActivityProfileBinding
+import com.example.moodify.model.response.RegisterResponse
 import com.example.moodify.retrofit.Preference
+import com.example.moodify.retrofit.UserModel
 import com.example.moodify.viewModel.MainViewModel
+import com.example.moodify.viewModel.RegisterViewModel
 import com.example.moodify.viewModel.ViewModelFactory
 
 class ProfileActivity : AppCompatActivity() {
@@ -37,6 +41,9 @@ class ProfileActivity : AppCompatActivity() {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN
             )
         }
+//        binding.tvDisplayName.text =
+//        binding.tvEmail.text =
+
         supportActionBar?.hide()
         binding.btnLogout.setOnClickListener {
             viewModel.logout()
@@ -45,6 +52,8 @@ class ProfileActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+
+
 
 
     }

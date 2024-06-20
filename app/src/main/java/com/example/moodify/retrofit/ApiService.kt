@@ -7,6 +7,9 @@ import com.example.moodify.model.response.AddJournalResponse
 import com.example.moodify.model.response.CopingResponse
 import com.example.moodify.model.response.GetDetailJournalResponse
 import com.example.moodify.model.response.LoginResponse
+import com.example.moodify.model.response.MeditationCategoryResponse
+import com.example.moodify.model.response.MusicCategoryResponse
+import com.example.moodify.model.response.PodcastCategoryResponse
 import com.example.moodify.model.response.RegisterResponse
 import okhttp3.Call
 import okhttp3.RequestBody
@@ -38,4 +41,12 @@ interface ApiService {
     @GET("coping/coping-recommendations")
     fun getCoping(): retrofit2.Call<CopingResponse>
 
+    @GET("copingCategory/type/meditation")
+    fun getMeditation(): retrofit2.Call<MeditationCategoryResponse>
+
+    @GET("copingCategory/type/music")
+    fun getMusic(): retrofit2.Call<MusicCategoryResponse>
+
+    @GET("copingCategory/type/podcast")
+    fun getPodcast(): retrofit2.Call<PodcastCategoryResponse>
 }

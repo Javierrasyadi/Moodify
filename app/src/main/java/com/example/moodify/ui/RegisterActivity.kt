@@ -70,8 +70,8 @@ class RegisterActivity : AppCompatActivity() {
                         is Result.Success -> {
                             Toast.makeText(this@RegisterActivity, it.data, Toast.LENGTH_SHORT).show()
                             val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
-                            intent.putExtra(ProfileActivity.EXTRA_NAME, name)
-                            intent.putExtra(ProfileActivity.EXTRA_EMAIL, email)
+                            intent.putExtra(LoginActivity.EXTRA_NAME, name)
+                            intent.putExtra(LoginActivity.EXTRA_EMAIL, email)
                             startActivity(intent)
 
                         }
