@@ -16,7 +16,7 @@ data class ProviderDataItemRegister(
 	val photoURL: Any? = null,
 	val phoneNumber: Any? = null,
 	val providerId: String? = null,
-	val displayName: Any? = null,
+	val displayName: String? = null,
 	val email: String? = null
 )
 

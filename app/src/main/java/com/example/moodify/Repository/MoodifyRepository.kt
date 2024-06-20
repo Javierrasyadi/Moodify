@@ -12,6 +12,8 @@ import com.example.moodify.model.response.CopingResponse
 import com.example.moodify.model.response.ErrorResponse
 import com.example.moodify.model.response.GetDetailJournalResponse
 import com.example.moodify.model.response.JournalItem
+import com.example.moodify.model.response.MusicCategoryResponse
+import com.example.moodify.model.response.ProviderDataItemRegister
 import com.example.moodify.model.response.RegisterResponse
 import com.example.moodify.model.response.Result
 import com.example.moodify.retrofit.ApiService
@@ -37,6 +39,7 @@ class MoodifyRepository private constructor(
     private val resultApi = MutableLiveData<Result<String>>()
     private val resultJournal = MutableLiveData<Result<List<JournalItem>>>()
     private val resultCoping = MutableLiveData<Result<CopingResponse>>()
+    private val resultUser = MutableLiveData<Result<List<ProviderDataItemRegister>>>()
     suspend fun login(email: String, password: String): LiveData<Result<String>> {
         try {
             val request = LoginRequest(email, password)
@@ -126,6 +129,25 @@ class MoodifyRepository private constructor(
             resultApi.value = Result.Error("Timeout")
         }
         return resultApi
+    }
+
+    fun getMusic(): LiveData<Result<MusicCategoryResponse>>{
+        val music = MutableLiveData<Result<MusicCategoryResponse>>()
+        music.value = Result.Loading
+        val client = apiService.getMusic()
+        client.enqueue(object : Callback<MusicCategoryResponse>{
+            override fun onResponse(
+                p0: Call<MusicCategoryResponse>,
+                p1: Response<MusicCategoryResponse>
+            ) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onFailure(p0: Call<MusicCategoryResponse>, p1: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 
     fun getCoping(): LiveData<Result<CopingResponse>> {

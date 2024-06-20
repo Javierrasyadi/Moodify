@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Build.VERSION_CODES.M
 import android.os.Bundle
+import android.provider.ContactsContract.Profile
 import android.util.Log
 import android.view.View
 import android.view.WindowInsets
@@ -19,7 +20,8 @@ import com.example.moodify.viewModel.ViewModelFactory
 
 class LoginActivity : AppCompatActivity() {
     companion object {
-        private const val EXTRA_NAME = "extra_name"
+         const val EXTRA_NAME = "extra_name"
+        const val EXTRA_EMAIL = "extra_email"
     }
 
     private lateinit var binding: ActivityLoginBinding
@@ -57,8 +59,12 @@ class LoginActivity : AppCompatActivity() {
                     }
 
                     is Result.Success -> {
+                        val getName = intent.getStringExtra(EXTRA_NAME)
+                        val getEmail = intent.getStringExtra(EXTRA_EMAIL)
                         Log.d("loginSucces", it.data)
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                        intent.putExtra(ProfileActivity.EXTRA_NAME, getName)
+                        intent.putExtra(ProfileActivity.EXTRA_EMAIL, email)
                         startActivity(intent)
                         finish()
                     }

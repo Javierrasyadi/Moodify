@@ -33,6 +33,10 @@ class MainViewModel(private val repository: MoodifyRepository) : ViewModel() {
         }
     }
 
+    fun getUser(){
+        val user = repository
+    }
+
     fun getJournal() {
         val source = repository.getJournal()
         _listJournal.removeSource(source)
