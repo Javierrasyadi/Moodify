@@ -53,6 +53,12 @@ class HomeFragment(
         user.observe(viewLifecycleOwner) {
             binding.tvHelloUser.text = "Hello ${it.name}"
         }
+
+        binding.btnToProfile.setOnClickListener {
+            val intent = Intent(requireActivity(), ProfileActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
+        }
         mood.observe(viewLifecycleOwner){
             binding.tvMoodDesc.text = "You feel ${it} today"
             binding.apply {
@@ -73,6 +79,8 @@ class HomeFragment(
                     }
                 }
             }
+
+
 
         }
 
@@ -113,7 +121,7 @@ class HomeFragment(
             startActivity(intent)
         }
 
-        binding.btnToRecommendation.setOnClickListener {
+        binding.ivRecommendation.setOnClickListener {
             val intent = Intent(requireActivity(),CopingActivity::class.java)
             startActivity(intent)
         }

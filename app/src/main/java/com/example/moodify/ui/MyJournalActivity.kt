@@ -2,11 +2,14 @@ package com.example.moodify.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.ViewModelProvider
 import com.example.moodify.Classifier
 import com.example.moodify.R
@@ -43,8 +46,10 @@ class MyJournalActivity : AppCompatActivity() {
         classifier.load("model.tflite", "word_dict.json") {
             binding.submitBtn.isEnabled = true
         }
+
         binding.submitBtn.setOnClickListener {
             val description = binding.etJournal.text.toString().trim()
+            binding.submitBtn.isEnabled = description.length >= 10
             runBlocking {
                 val predictedMood = async { classifier.classify(description) }
                 Log.d(TAG, "Description: $description")

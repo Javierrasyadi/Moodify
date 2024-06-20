@@ -43,7 +43,8 @@
             android:layout_height="30dp"
             android:layout_gravity="end|center_vertical"
             android:layout_marginEnd="20dp"
-            tools:src="@tools:sample/avatars" />
+            android:src="@drawable/profile_avatar_default"
+            />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -226,6 +227,7 @@
                 app:layout_constraintTop_toBottomOf="@id/btn_to_recommendation">
 
                 <ImageView
+                    android:id="@+id/iv_recommendation"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
@@ -238,7 +240,7 @@
                     android:layout_marginTop="20dp"
                     android:fontFamily="@font/nunito_sans_bold"
                     android:text="Mindful \nMedication"
-                    android:textColor="#34A853"
+                    android:textColor="@color/light_green"
                     android:textSize="20sp" />
 
             </FrameLayout>

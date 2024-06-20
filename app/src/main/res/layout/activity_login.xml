@@ -71,7 +71,6 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Large">
 
@@ -128,46 +127,46 @@
         android:fontFamily="@font/nunito_sans_semibold"/>
 
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
+<!--    <LinearLayout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        android:orientation="horizontal">-->
 
-        <View
-            android:layout_width="110dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="11dp"
-            android:background="@color/black"/>
+<!--        <View-->
+<!--            android:layout_width="110dp"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:layout_marginTop="11dp"-->
+<!--            android:background="@color/black"/>-->
 
-        <TextView
-            android:id="@+id/tv_or_login_with"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_gravity="center_horizontal"
-            android:text="@string/or_login_with"
-            android:fontFamily="@font/nunito_sans"
-            android:textSize="16sp" />
+<!--        <TextView-->
+<!--            android:id="@+id/tv_or_login_with"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="10dp"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:layout_gravity="center_horizontal"-->
+<!--            android:text="@string/or_login_with"-->
+<!--            android:fontFamily="@font/nunito_sans"-->
+<!--            android:textSize="16sp" />-->
 
-        <View
-            android:layout_width="110dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="11dp"
-            android:background="@color/black"/>
+<!--        <View-->
+<!--            android:layout_width="110dp"-->
+<!--            android:layout_height="1dp"-->
+<!--            android:layout_marginTop="11dp"-->
+<!--            android:background="@color/black"/>-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
     <!-- google button -->
-    <ImageButton
-        android:id="@+id/btn_google"
-        android:background="@drawable/google_btn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="15dp"
-        android:layout_marginTop="20dp"
-        />
+<!--    <ImageButton-->
+<!--        android:id="@+id/btn_google"-->
+<!--        android:background="@drawable/google_btn"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:padding="15dp"-->
+<!--        android:layout_marginTop="20dp"-->
+<!--        />-->
 
     <ProgressBar
         android:id="@+id/loading"
