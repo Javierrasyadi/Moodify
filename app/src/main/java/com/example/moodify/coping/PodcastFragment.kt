@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -20,6 +21,7 @@ import com.example.moodify.databinding.FragmentPodcastBinding
 import com.example.moodify.model.response.Result
 import com.example.moodify.ui.MainActivity
 import com.example.moodify.viewModel.CopingViewModel
+import com.example.moodify.viewModel.PodcastViewModel
 import com.example.moodify.viewModel.SharedViewModel
 import com.example.moodify.viewModel.ViewModelFactory
 
@@ -31,7 +33,9 @@ class PodcastFragment : Fragment() {
     }
     private val sharedViewModel: SharedViewModel by activityViewModels()
     private lateinit var binding: FragmentPodcastBinding
-
+    private val podcastViewModel: PodcastViewModel by viewModels<PodcastViewModel> {
+        ViewModelFactory.getInstance(requireContext())
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -67,19 +71,21 @@ class PodcastFragment : Fragment() {
             }
         })
 
-        copingViewModel.getCoping().observe(requireActivity(), Observer { result ->
+        podcastViewModel.getPodcast().observe(requireActivity(), Observer { result ->
             when (result) {
                 is Result.Loading -> {
-                    // Show loading indicator
+                    showLoading(true)
                 }
                 is Result.Success -> {
                     // Handle success
-                    val copingResponse = result.data
-                    binding.tvAffirmationText.text = copingResponse.recommendations?.textAffirmationLast
+                    showLoading(false)
+                    val podcastWord = result.data
+                    binding.tvAffirmationText.text = podcastWord.recommendationsPodcast.joy.textAffirmationFirst.random()
                 }
                 is Result.Error -> {
                     // Handle error
-                    Log.e("CopingActivity", result.error)
+                    showLoading(false)
+                    Toast.makeText(context, "Failed to retrieve data", Toast.LENGTH_SHORT).show()
                 }
             }
         })
@@ -87,6 +93,14 @@ class PodcastFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         exoPlayer.release()
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.loading.visibility = View.VISIBLE
+        } else {
+            binding.loading.visibility = View.GONE
+        }
     }
 
 }

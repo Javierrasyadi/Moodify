@@ -25,7 +25,7 @@
         android:id="@+id/tv_affirmation_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:text="text"
         android:fontFamily="@font/nunito_sans_semibold"
         android:textColor="@color/white"
@@ -34,7 +34,7 @@
         android:gravity="center_horizontal"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="80dp"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cv_media"
@@ -48,8 +48,7 @@
         android:layout_marginEnd="30dp"
         app:cardCornerRadius="15dp"
         android:backgroundTint="@color/white"
-        app:cardElevation="10dp"
-        android:alpha="0.5"
+        app:cardElevation="20dp"
         android:layout_marginBottom="70dp"
         >
         <androidx.media3.ui.PlayerView
@@ -67,7 +66,7 @@
         android:id="@+id/fabBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="59dp"
+        android:layout_marginTop="20dp"
         android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,7 +78,17 @@
         app:tint="@color/aqua"
         app:elevation="20dp"
         />
-
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="?android:attr/progressBarStyle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
 
 
 

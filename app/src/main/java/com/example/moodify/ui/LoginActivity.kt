@@ -60,7 +60,6 @@ class LoginActivity : AppCompatActivity() {
 
                     is Result.Success -> {
                         val getName = intent.getStringExtra(EXTRA_NAME)
-                        val getEmail = intent.getStringExtra(EXTRA_EMAIL)
                         Log.d("loginSucces", it.data)
                         val intent = Intent(this@LoginActivity, MainActivity::class.java)
                         intent.putExtra(ProfileActivity.EXTRA_NAME, getName)
@@ -71,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
 
                     is Result.Error -> {
                         Log.d("loginerror", it.error)
-                        Toast.makeText(this, it.error, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, "Please input correct email/password", Toast.LENGTH_SHORT).show()
                         showLoading(false)
                     }
                 }

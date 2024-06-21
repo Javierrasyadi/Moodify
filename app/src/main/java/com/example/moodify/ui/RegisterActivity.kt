@@ -63,7 +63,7 @@ class RegisterActivity : AppCompatActivity() {
                         }
 
                         is Result.Error -> {
-                            Toast.makeText(this@RegisterActivity, it.error, Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@RegisterActivity, "Please input fields", Toast.LENGTH_SHORT).show()
                             showLoading(false)
                         }
 
@@ -73,7 +73,6 @@ class RegisterActivity : AppCompatActivity() {
                             intent.putExtra(LoginActivity.EXTRA_NAME, name)
                             intent.putExtra(LoginActivity.EXTRA_EMAIL, email)
                             startActivity(intent)
-
                         }
                     }
                 }

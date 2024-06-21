@@ -26,6 +26,12 @@ class ViewModelFactory(private val repository: MoodifyRepository) : ViewModelPro
             modelClass.isAssignableFrom(CopingViewModel::class.java)->{
                 CopingViewModel(repository) as T
             }
+            modelClass.isAssignableFrom(MusicViewModel::class.java)->{
+                MusicViewModel(repository)as T
+            }
+            modelClass.isAssignableFrom(PodcastViewModel::class.java)->{
+                PodcastViewModel(repository) as T
+            }
 
             else -> throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
         }

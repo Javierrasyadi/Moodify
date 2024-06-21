@@ -5,113 +5,113 @@ import com.google.gson.annotations.SerializedName
 data class PodcastCategoryResponse(
 
 	@field:SerializedName("recommendations")
-	val recommendationsPodcast: RecommendationsPodcast? = null
+	val recommendationsPodcast: RecommendationsPodcast
 )
 
 data class RecommendationsPodcast(
 
 	@field:SerializedName("love")
-	val love: PodLove? = null,
+	val love: PodLove,
 
 	@field:SerializedName("joy")
-	val joy: PodJoy? = null,
+	val joy: PodJoy,
 
 	@field:SerializedName("happy")
-	val happy: PodHappy? = null,
+	val happy: PodHappy,
 
 	@field:SerializedName("neutral")
-	val neutral: PodNeutral? = null,
+	val neutral: PodNeutral,
 
 	@field:SerializedName("sadness")
-	val sadness: PodSadness? = null,
+	val sadness: PodSadness,
 
 	@field:SerializedName("anger")
-	val anger: PodAnger? = null,
+	val anger: PodAnger,
 
 	@field:SerializedName("fear")
-	val fear: PodFear? = null
+	val fear: PodFear
 )
 
 data class PodNeutral(
 
 	@field:SerializedName("podcast")
-	val podcast: List<String?>? = null,
+	val podcast: List<String>,
 
 	@field:SerializedName("text_affirmation_first")
-	val textAffirmationFirst: List<String?>? = null,
+	val textAffirmationFirst: List<String>,
 
 	@field:SerializedName("text_affirmation_last")
-	val textAffirmationLast: List<String?>? = null
+	val textAffirmationLast: List<String>
 )
 
 data class PodHappy(
 
 	@field:SerializedName("podcast")
-	val podcast: List<String?>? = null,
+	val podcast: List<String>,
 
 	@field:SerializedName("text_affirmation_first")
-	val textAffirmationFirst: List<String?>? = null,
+	val textAffirmationFirst: List<String>,
 
 	@field:SerializedName("text_affirmation_last")
-	val textAffirmationLast: List<String?>? = null
+	val textAffirmationLast: List<String>
 )
 
 data class PodSadness(
 
 	@field:SerializedName("podcast")
-	val podcast: List<String?>? = null,
+	val podcast: List<String>,
 
 	@field:SerializedName("text_affirmation_first")
-	val textAffirmationFirst: List<String?>? = null,
+	val textAffirmationFirst: List<String>,
 
 	@field:SerializedName("text_affirmation_last")
-	val textAffirmationLast: List<String?>? = null
+	val textAffirmationLast: List<String>
 )
 
 data class PodAnger(
 
 	@field:SerializedName("podcast")
-	val podcast: List<String?>? = null,
+	val podcast: List<String>,
 
 	@field:SerializedName("text_affirmation_first")
-	val textAffirmationFirst: List<String?>? = null,
+	val textAffirmationFirst: List<String>,
 
 	@field:SerializedName("text_affirmation_last")
-	val textAffirmationLast: List<String?>? = null
+	val textAffirmationLast: List<String>
 )
 
 data class PodLove(
 
 	@field:SerializedName("podcast")
-	val podcast: List<String?>? = null,
+	val podcast: List<String>,
 
 	@field:SerializedName("text_affirmation_first")
-	val textAffirmationFirst: List<String?>? = null,
+	val textAffirmationFirst: List<String>,
 
 	@field:SerializedName("text_affirmation_last")
-	val textAffirmationLast: List<String?>? = null
+	val textAffirmationLast: List<String>
 )
 
 data class PodFear(
 
 	@field:SerializedName("podcast")
-	val podcast: List<String?>? = null,
+	val podcast: List<String>,
 
 	@field:SerializedName("text_affirmation_first")
-	val textAffirmationFirst: List<String?>? = null,
+	val textAffirmationFirst: List<String>,
 
 	@field:SerializedName("text_affirmation_last")
-	val textAffirmationLast: List<String?>? = null
+	val textAffirmationLast: List<String>
 )
 
 data class PodJoy(
 
 	@field:SerializedName("podcast")
-	val podcast: List<String?>? = null,
+	val podcast: List<String>,
 
 	@field:SerializedName("text_affirmation_first")
-	val textAffirmationFirst: List<String?>? = null,
+	val textAffirmationFirst: List<String>,
 
 	@field:SerializedName("text_affirmation_last")
-	val textAffirmationLast: List<String?>? = null
+	val textAffirmationLast: List<String>
 )
