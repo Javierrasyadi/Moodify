@@ -13,6 +13,7 @@ import com.example.moodify.model.response.ErrorResponse
 import com.example.moodify.model.response.GetDetailJournalResponse
 import com.example.moodify.model.response.JournalItem
 import com.example.moodify.model.response.MusicCategoryResponse
+import com.example.moodify.model.response.PodcastCategoryResponse
 import com.example.moodify.model.response.ProviderDataItemRegister
 import com.example.moodify.model.response.RegisterResponse
 import com.example.moodify.model.response.Result
@@ -75,7 +76,7 @@ class MoodifyRepository private constructor(
             val request = SignUpRequest(name, email, password)
             val response = apiService.register(request)
             resultApi.value = Result.Success(response.message!!)
-            Log.d(TAG, "pendaftaran berhasil")
+            Log.d(TAG, "signup success")
         } catch (e: HttpException) {
             val errorBody = e.response()?.errorBody()?.string()
             val errorResponse = Gson().fromJson(errorBody, ErrorResponse::class.java)
@@ -137,18 +138,45 @@ class MoodifyRepository private constructor(
         val client = apiService.getMusic()
         client.enqueue(object : Callback<MusicCategoryResponse>{
             override fun onResponse(
-                p0: Call<MusicCategoryResponse>,
-                p1: Response<MusicCategoryResponse>
+                call: Call<MusicCategoryResponse>,
+                response: Response<MusicCategoryResponse>
             ) {
-                TODO("Not yet implemented")
+                if (response.isSuccessful) {
+                    music.value = Result.Success(response.body()!!)
+                } else {
+                    music.value = Result.Error("Music Error: Cant Retrieve data")
+                }
             }
-
-            override fun onFailure(p0: Call<MusicCategoryResponse>, p1: Throwable) {
-                TODO("Not yet implemented")
+            override fun onFailure(call: Call<MusicCategoryResponse>, throwable: Throwable) {
+                music.value = Result.Error("Music Error: Cant Retrieve data")
             }
-
         })
+        return music
     }
+
+    fun getPodcast(): LiveData<Result<PodcastCategoryResponse>>{
+        val podcast = MutableLiveData<Result<PodcastCategoryResponse>>()
+        podcast.value = Result.Loading
+        val client = apiService.getPodcast()
+        client.enqueue(object : Callback<PodcastCategoryResponse>{
+            override fun onResponse(
+                call: Call<PodcastCategoryResponse>,
+                response: Response<PodcastCategoryResponse>
+            ) {
+                if (response.isSuccessful) {
+                    podcast.value = Result.Success(response.body()!!)
+                } else {
+                    podcast.value = Result.Error("Music Error: Cant Retrieve data")
+                }
+            }
+            override fun onFailure(call: Call<PodcastCategoryResponse>, throwable: Throwable) {
+                podcast.value = Result.Error("Music Error: Cant Retrieve data")
+            }
+        })
+        return podcast
+    }
+
+
 
     fun getCoping(): LiveData<Result<CopingResponse>> {
         val resultCoping = MutableLiveData<Result<CopingResponse>>()
@@ -181,6 +209,7 @@ class MoodifyRepository private constructor(
             LocalDateTime.parse(it.updatedAt, formatter)
         }
     }
+
 
     suspend fun logout() {
         userPreference.logout()

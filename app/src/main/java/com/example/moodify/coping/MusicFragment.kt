@@ -24,13 +24,15 @@ import com.example.moodify.model.response.Result
 import com.example.moodify.ui.MainActivity
 import com.example.moodify.ui.OtherFragment
 import com.example.moodify.viewModel.CopingViewModel
+import com.example.moodify.viewModel.MusicViewModel
 import com.example.moodify.viewModel.SharedViewModel
 import com.example.moodify.viewModel.ViewModelFactory
 
 class MusicFragment : Fragment() {
     private lateinit var playerView: PlayerView
     private lateinit var exoPlayer: ExoPlayer
-    private val copingViewModel: CopingViewModel by viewModels {
+
+    private val musicViewModel: MusicViewModel by viewModels<MusicViewModel> {
         ViewModelFactory.getInstance(requireContext())
     }
     private val sharedViewModel: SharedViewModel by activityViewModels()
@@ -67,30 +69,22 @@ class MusicFragment : Fragment() {
             }
         })
 
-        copingViewModel.getCoping().observe(requireActivity(), Observer { result ->
-            when (result) {
-                is Result.Loading -> {
-                    // Show loading indicator
+        musicViewModel.getMusic().observe(requireActivity(), Observer{
+            when(it){
+                is Result.Loading ->{
+                    showLoading(true)
                 }
-                is Result.Success -> {
-                    // Handle success
-                    val copingResponse = result.data
-                    binding.tvAffirmationText.text = copingResponse.recommendations?.textAffirmationFirst
+                is Result.Error ->{
+                    showLoading(false)
+                    Toast.makeText(context, "failed to retrieve data", Toast.LENGTH_SHORT).show()
                 }
-                is Result.Error -> {
-                    // Handle error
-                    Log.e("CopingActivity", result.error)
+                is Result.Success ->{
+                    showLoading(false)
+                    val textAffirmation = it.data
+                    binding.tvAffirmationText.text = textAffirmation.recommendationsMusic.anger.textAffirmationFirst.random()
                 }
             }
         })
-    }
-
-    private fun replaceFragment(){
-        val fragmentManager = requireActivity().supportFragmentManager
-        val fragmentOther = OtherFragment()
-        val transaction = fragmentManager.beginTransaction()
-        transaction.replace(R.id.other_fragment, fragmentOther)
-        transaction.commit()
     }
 
     override fun onDestroyView() {
@@ -98,4 +92,11 @@ class MusicFragment : Fragment() {
         exoPlayer.release()
     }
 
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.loading.visibility = View.VISIBLE
+        } else {
+            binding.loading.visibility = View.GONE
+        }
+    }
 }

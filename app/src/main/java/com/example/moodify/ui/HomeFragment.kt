@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.LiveData
 import com.example.moodify.R
@@ -59,6 +60,15 @@ class HomeFragment(
             startActivity(intent)
             requireActivity().finish()
         }
+        binding.btnToRecommendation.setOnClickListener {
+            val mFragment = OtherFragment()
+            val transaction = fragmentManager?.beginTransaction()
+            if (transaction != null) {
+                transaction.replace(R.id.frameLayout_main, mFragment) // Replace fragment in container
+                transaction.addToBackStack("fragment_transition") // Add to back stack for navigation
+                transaction.commit()
+            }
+        }
         mood.observe(viewLifecycleOwner){
             binding.tvMoodDesc.text = "You feel ${it} today"
             binding.apply {
@@ -85,13 +95,16 @@ class HomeFragment(
         }
 
         listJournal.observe(viewLifecycleOwner) { result ->
+            showLoading(true)
             if (result is Result.Success) {
+                showLoading(false)
                 if (result.data.isEmpty()){
                     val intent = Intent(requireActivity(), MyJournalActivity::class.java)
                     intent.putExtra(MyJournalActivity.EXTRA_IS_NEW, true)
                     startActivity(intent)
                     requireActivity().finish()
                 } else {
+                    showLoading(false)
                     val journal = result.data.first()
                     binding.apply {
                         tvTitle.text = journal.journalTitle
@@ -112,6 +125,7 @@ class HomeFragment(
                     }
                 }
             } else if (result is Result.Error) {
+                showLoading(false)
                 Toast.makeText(requireActivity(), result.error, Toast.LENGTH_SHORT).show()
             }
         }
@@ -124,6 +138,14 @@ class HomeFragment(
         binding.ivRecommendation.setOnClickListener {
             val intent = Intent(requireActivity(),CopingActivity::class.java)
             startActivity(intent)
+        }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.loading.visibility = View.VISIBLE
+        } else {
+            binding.loading.visibility = View.GONE
         }
     }
 
